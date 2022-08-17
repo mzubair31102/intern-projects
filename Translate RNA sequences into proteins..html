@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+  <body>
+    <script>
+      // Codon                 | Protein
+      // AUG                   | Methionine
+      // UUU, UUC              | Phenylalanine
+      // UUA, UUG              | Leucine
+      // UCU, UCC, UCA, UCG    | Serine
+      // UAU, UAC              | Tyrosine
+      // UGU, UGC              | Cysteine
+      // UGG                   | Tryptophan
+      // UAA, UAG, UGA         | STOP
+      var obj = {
+        AUG: "Methionine",
+        UUU: "Phenylalanine",
+        UUC: "Phenylalanine",
+        UUA: "Leucine",
+        UUG: "Leucine",
+        UCU: "Serine",
+        UCC: "Serine",
+        UCA: "Serine",
+        UCG: "Serine",
+        UAU: "Tyrosine",
+        UAC: "Tyrosine",
+        UGU: "Cysteine",
+        UGC: "Cysteine",
+        UGG: "Tryptophan",
+        UAA: "STOP",
+        UAG: "STOP",
+        UGA: "STOP",
+
+      };
+      var result_arr = [];
+      // Splitting String by 3 Chars...
+      function Splitting_string(input_string) {
+        var Codens = [];
+        for (var i = 0; i < input_string.length; i = i + 3) {
+          Codens.push(input_string.slice(i, i + 3));
+        }
+        //console.log("Result: "+Codens[Codens.length-1].length)
+        if(Codens[Codens.length-1].length !=3){
+          console.log("Length Must Multiple of 3 of Charecters!")
+          return false;
+        }else{
+          return Codens;
+        }
+      }
+
+      function resutls(Splited_arr) {
+        for (var i = 0; i < Splited_array.length; i++) {
+          // console.log(input_array[i]);
+          if (Splited_array[i] in obj) {
+            var key = Splited_array[i];
+            // if found STOP in String Stop 
+            if(obj[key]=="STOP"){
+              break;
+            }
+            console.log(key + ": " + obj[key]);
+            result_arr.push(obj[key]);
+          };
+        };
+      };
+      // Remove Duplicate Values
+      function remove_dub(result_ar){
+        return Array.from(new Set(result_ar));
+      }
+     // console.log(Splitting_string("AUGUAAUUUUUAUUC"));
+      var input_arr = "UCUUGU";
+     var Splited_array = Splitting_string(input_arr.toUpperCase());
+      console.log(Splited_array);
+      resutls(Splited_array);
+      //console.log(result_arr);
+
+      console.log(remove_dub(result_arr))
+
+    </script>
+  </body>
+</html>
